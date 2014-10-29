@@ -24,13 +24,74 @@
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-
 		<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
-		<script src="js/auth.js"></script>
-		<script src="https://webrtc.voxbone.com/js/voxbone-0.0.1.js" type="text/javascript"></script>
+		<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/hmac-sha1.js"></script>
+		<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js"></script>
+
+		<script src="https://webrtc.voxbone.com/js/voxbone-0.0.2.js" type="text/javascript"></script>
     	<script src="https://webrtc.voxbone.com/js/jssip-0.3.0.js" type="text/javascript"></script>
     	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			var auth = function () {
+			    var TTL = 300;
+			    var timeInMillis = (new Date).getTime();//Date.now();
+			    console.log("millis: ",timeInMillis);
+			    var expires = Math.ceil((timeInMillis) / 1000);
+			    expires = expires + TTL;
+			    console.log("expires: ",expires);
+			    var username = "voxbonedevelopers";
+			    var secret = "wow-RTC14";
+			    var hash = CryptoJS.HmacSHA1(expires + ":" + username, secret);
+			    var base64Hash = hash.toString(CryptoJS.enc.Base64);
+			    console.log(base64Hash);
 
+			    var config = {
+			        "key":base64Hash,
+			        "expires":expires,
+			        "username":username
+			    };
+			    return config;
+			};
+              var eventHandlers = {
+                  'progress':   function(e){ document.getElementById("status_message").innerHTML="Calling.."},
+                  'failed':     function(e){ document.getElementById("status_message").innerHTML="Failed to Connect: " + e.data.cause;},
+                  'started':    function(e){ document.getElementById("status_message").innerHTML="In call"; },
+                  'ended':      function(e){ document.getElementById("status_message").innerHTML="Call ended"; }
+              };
+              /** This part is required as it handle Voxbone WebRTC initialization **/
+              function init(){
+			  	  var voxrtc_config = auth();
+			  	  console.log(voxrtc_config);
+                  // Set the webrtc auth server url (url below it the default one)
+                  voxbone.WebRTC.authServerURL = "https://webrtc.voxbone.com/rest/authentication/createToken";
+                  // Force the preferedPop to TEST.
+                  //This can be usefull if you need  to get your webrtc calls troubleshooted
+                  //If this is not set, a ping to each pop will be issued to determine which is the most optimal for the user
+                  //Default is to use the ping mechanism to determine the preferedPop.
+                  // voxbone.WebRTC.preferedPop = 'TEST';
+                  // set custom event handlers
+                  voxbone.WebRTC.customEventHandler = eventHandlers;
+                  //Set the caller-id, domain name gets automatically stripped off
+                  //Note that It must be a valid sip uri.
+                  //Default value is: voxrtc@voxbone.com
+                  //voxbone.WebRTC.configuration.uri = "caller-id@voxbone.com";
+                  //Bootstrap Voxbone WebRTC javascript object
+                  timeout = setTimeout(function() {
+                  			voxbone.WebRTC.init(voxrtc_config);
+                  }, 2000);
+              }
+              /** Optional part, only use to play with mute **/
+              function toggleMute(){
+                  var button = document.getElementById("mute");
+                  if( voxbone.WebRTC.isMuted ){
+                      voxbone.WebRTC.unmute();
+                      button.value = "mute";
+                  }else{
+                      voxbone.WebRTC.mute();
+                      button.value = "unmute";
+                  }
+              }
+        </script>
 		<script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
 				var link = document.createElement( 'link' );
@@ -46,7 +107,7 @@
 		<![endif]-->
 	</head>
 
-	<body>
+	<body onload="init();">
 
 		<div class="reveal">
 
@@ -78,7 +139,7 @@
 					<h6>
 						<span class="icon inline-block gicon">
 							<img src="./images/github.png" class="github"/>
-							<a href="http://git.io/Rtxo_A">git.io/Rtxo_A</a>
+							<a href="http://git.io/VYHcwQ">git.io/VYHcwQ</a>
 						</span>
 					</h6>
 					<h6>
@@ -172,7 +233,7 @@
 						<img width="150px" src="./images/voxlogo.png" class="rotate-left" />
 					</div>
 					<div style="position: absolute; top: 3.5em; right: 6.5em !important;" class="fragment" data-fragment-index="4">
-						<img width="150px" src="./images/linkedin.png" class="rotate-right"/>
+						<img width="150px" src="./images/LinkedIn.png" class="rotate-right"/>
 					</div>
 					<div style="position: absolute; top: 7.5em; right: 5.5em !important;" class="fragment" data-fragment-index="4">
 						<img width="150px" src="./images/twitter.png"/>
@@ -194,7 +255,12 @@
 				</section>
 				<section>
 					<h1 class="purple">DEMO!</h1>
-					<button class="click2call fragment">CALL ME!</button>
+					<button class="click2call fragment" onclick='voxbone.WebRTC.call("3225886853");' data-fragment-index="2">CALL ME!</button>
+					<br />
+					<br />
+					<div id="status_message">
+						<p data-fragment-index="2"></p>
+					</div>
 					<aside class="notes">
 						Go through:
 						- SDKs
@@ -256,7 +322,7 @@ voxbone.WebRTC.sendDTMF(tones[0]);
 							<img width="150px" src="./images/fb.png" class="rotate-left"/>
 						</div>
 						<div style="position: absolute; top: 5.5em; right: 2.5em !important;">
-							<img width="150px" src="./images/linkedin.png" class="rotate-right"/>
+							<img width="150px" src="./images/LinkedIn.png" class="rotate-right"/>
 						</div>
 						<div style="position: absolute; top: 5.5em; right: 5.5em !important;">
 							<img width="150px" src="./images/gmaillogo.png" class="rotate-left"/>
@@ -291,7 +357,7 @@ voxbone.WebRTC.sendDTMF(tones[0]);
 				<section>
 					<div style="position: absolute; top: -5em; left: -6em !important;">
 							<span class="usecase-title inlne-block">
-								<img width="100px" src="./images/linkedin.png"/>
+								<img width="100px" src="./images/LinkedIn.png"/>
 								<h2 class="purple">LinkedIn</h2>
 							</span>
 					</div>
