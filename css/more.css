@@ -115,6 +115,7 @@ h6{
 .usecase-title img{
     float: left !important;
     padding-right: 0.5em !important;
+    padding-left: 3em !important;
 }
 
 .usecase-title h2{
