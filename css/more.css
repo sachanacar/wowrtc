@@ -109,6 +109,7 @@ h6{
 .usecase-title{
     padding-right: 1em !important;
     min-width: 300px;
+    margin-left: 3em !important;
 }
 
 .usecase-title img{
