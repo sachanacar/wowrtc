@@ -68,13 +68,13 @@
                   //This can be usefull if you need  to get your webrtc calls troubleshooted
                   //If this is not set, a ping to each pop will be issued to determine which is the most optimal for the user
                   //Default is to use the ping mechanism to determine the preferedPop.
-                  // voxbone.WebRTC.preferedPop = 'TEST';
+                   voxbone.WebRTC.preferedPop = 'LA';
                   // set custom event handlers
                   voxbone.WebRTC.customEventHandler = eventHandlers;
                   //Set the caller-id, domain name gets automatically stripped off
                   //Note that It must be a valid sip uri.
                   //Default value is: voxrtc@voxbone.com
-                  //voxbone.WebRTC.configuration.uri = "caller-id@voxbone.com";
+                  voxbone.WebRTC.configuration.uri = "WOWRTC@voxbone.com";
                   //Bootstrap Voxbone WebRTC javascript object
                   timeout = setTimeout(function() {
                   			voxbone.WebRTC.init(voxrtc_config);
@@ -373,7 +373,7 @@ voxbone.WebRTC.sendDTMF(tones[0]);
 					<br>
 					<h4 class="purple"><a href="https://blog.voxbone.com/mailrtc/" target="_blank">Click2Call Email Footer</a></h4>
 					<br>
-					<h4 class="purple"><a href="" target="_blank">Contact Sale - Google Ad Banner</a></h4>
+					<h4 class="purple"><a href="http://blog.voxbone.com/astricon-14-heres-went/" target="_blank">GrannyCall</a></h4>
 
 				</section>
 				<section>
@@ -389,7 +389,7 @@ voxbone.WebRTC.sendDTMF(tones[0]);
 				</section>
 				<section>
 					<h2 class="purple">Thank you!</h2>
-					<img style="width:50%;" src="./images/qrme.png">
+					<!--<img style="width:50%;" src="./images/qrme.png">-->
 				</section>
 			</div>
 		</div>
