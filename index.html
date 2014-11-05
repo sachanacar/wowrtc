@@ -124,6 +124,9 @@
 					<p>
 						<small>By <a href="http://twitter.com/sachanacar">Sacha Nacar</a>, Developer Community Manager</small>
 					</p>
+					<aside class="notes">
+						How to use WebRTC and SIP to build awesome telecommunication applications in your browser
+					</aside>
 				</section>
 
 				<section>
@@ -159,16 +162,20 @@
 					<h4>
 						By bringing local <span class="purple">voice</span> services to the <span class="purple">cloud</span>.
 					</h4>
+					<aside class="notes">
+						Who is Voxbone? We want to simplify communications by enabling local communication globally.
+
+						<br />-  We provide phone numbers from all over the world and combine it with inbound SIP trunking services to enable our customers to scale their telecommunication platforms internationally
+					</aside>
 				</section>
 
 				<section>
 					<img src="./images/flow.png" width="1000">
 					<small><p>credit: www.voxbone.com</p></small>
 					<aside class="notes">
-						We sell local phone numbers internationally intended for VoIP use. We provide a redundant core IP backbone with POP servers that collect the calls from the PSTNs and routes them to other parts of the world over IP.<br>
-
-						- Provisioning API<br>
-						- WebRTC
+						We sell local phone numbers internationally intended for VoIP use. We provide a redundant core IP backbone with POP servers that collect the calls from the PSTNs and routes them to other parts of the world over IP.<br><br>
+						- Therefore enabling local communication internationally
+						<br>- Leverage with provisioning API and now, WebRTC
 					</aside>
 				</section>
 				<section>
@@ -182,25 +189,26 @@
 					<img src="./images/pear2pear.gif" width="400px">
 
 					<aside class="notes">
-						- Series of Javascript APIs <br>
-						- Peer2peer communication <br>
-						- No Plugin
-						- A MediaStream is a stream of audio and/or video data.
-						- RTCDataChannel is a bidirectional channel to send arbitrary data over a WebRTC connection. It works similarly to web sockets, but it’s peer-to-peer, and it allows you to trade message reliability for speed (think UDP vs. TCP).
-						- The glue that turns Media Stream and RTCDataChannel into WebRTC is RTCPeerConnection. In order to establish the call, RTCPeerConnection provides an API to complete a handshake between two browsers.
+						- It’s a set of javascript APIs that pretty much speaks for themselves. <br>
+						- Media Stream that handles audio and video data streams, you are probably familiar with GetUserMedia()<br>
+						- RTC DataChannel that handles the peer-to-peer communication of data<br>
+						- RTCPeerConnection which completes the handshake between the two browsers to set up the peer to peer connection<br>
+
+						What you get is a full browser-to-browser communication framework that does not require ANY plugin
 					</aside>
 				</section>
 				<section>
 					<img src="./images/readyyet.png" style="margin-top: -2em;">
 					<small><p>credit: www.iswebrtcreadyyet.com</p></small>
+					<aside class="notes">
+						Right now WebRTC is mainly supported by Firefox, Opera, and Chrome browsers while Microsoft is making some moves on IE, here’s a neat little website to stay up to date.
+					</aside>
 				</section>
 				<section>
 					<img src="./images/howwefit.png" width="900">
 					<small><p>credit: www.voxbone.com</p></small>
 					<aside class="notes">
-						- From: to PSTN to SIP <br>
-						- To: WebRTC to SIP <br>
-						- Enables WebRTC to PSTN
+					Where do we fit? This is our original call flow - WebRTC enables browser to browser communications. However, there are still billions of phones, PBXs, call centers that want to be hooked up to this. We provide a way to connect the PSTN to WebRTC by providing a WebRTC to SIP solution.This is our original call flow,
 					</aside>
 				</section>
 				<section data-background="./images/owl.png">
@@ -249,8 +257,6 @@
 						- I'll teach you how to get started developing WebRTC Aps (the circle) and you'll realise how easy it is to quickly create complex apps with other APIs (the owl)<br><br>
 
 						- WebRTC is awesome because since it's built on open web standards, you can seamlessly mix it with other HTML5 APIs (webAudio or webGL), other open web APIs (three.js or node.js) or any vendors' API (LinkedIn, Facebook, IoT) <br><br>
-						- it's just your average javascript API!
-
 					</aside>
 				</section>
 				<section>
@@ -262,12 +268,7 @@
 						<p data-fragment-index="2"></p>
 					</div>
 					<aside class="notes">
-						Go through:
-						- SDKs
-						- Authentication
-						- init(voxrtc)
-						- Make a call
-						- Send DTMF
+						To prove to you how easy it is to integrate webRTC, I integrated it in my presentation. Call!
 					</aside>
 				</section>
 				<section>
