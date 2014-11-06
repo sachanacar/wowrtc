@@ -125,7 +125,7 @@
 						<small>By <a href="http://twitter.com/sachanacar">Sacha Nacar</a>, Developer Community Manager</small>
 					</p>
 					<aside class="notes">
-						How to use WebRTC and SIP to build awesome telecommunication applications in your browser
+						WebRTC + SIP -  TAD in browser
 					</aside>
 				</section>
 
@@ -163,9 +163,8 @@
 						By bringing local <span class="purple">voice</span> services to the <span class="purple">cloud</span>.
 					</h4>
 					<aside class="notes">
-						Who is Voxbone? We want to simplify communications by enabling local communication globally.
-
-						<br />-  We provide phone numbers from all over the world and combine it with inbound SIP trunking services to enable our customers to scale their telecommunication platforms internationally
+						Who is Voxbone? 
+						<br />-  Customers to scale their telecommunication platforms internationally by bringing local voice services to the cloud.
 					</aside>
 				</section>
 
@@ -173,7 +172,8 @@
 					<img src="./images/flow.png" width="1000">
 					<small><p>credit: www.voxbone.com</p></small>
 					<aside class="notes">
-						We sell local phone numbers internationally intended for VoIP use. We provide a redundant core IP backbone with POP servers that collect the calls from the PSTNs and routes them to other parts of the world over IP.<br><br>
+						Local phone numbers internationally for VoIP use. 
+						Redundant IP backbone with POP servers that collect the calls from the PSTNs --> IP.<br><br>
 						- Therefore enabling local communication internationally
 						<br>- Leverage with provisioning API and now, WebRTC
 					</aside>
@@ -190,25 +190,29 @@
 
 					<aside class="notes">
 						- It’s a set of javascript APIs that pretty much speaks for themselves. <br>
-						- Media Stream that handles audio and video data streams, you are probably familiar with GetUserMedia()<br>
-						- RTC DataChannel that handles the peer-to-peer communication of data<br>
-						- RTCPeerConnection which completes the handshake between the two browsers to set up the peer to peer connection<br>
+						- Media Stream: audio/video data streams - GetUserMedia() - prompts permission<br>
+						- RTC DataChannel: data running between the peers<br>
+						- RTCPeerConnection handshake between browsers for peer to peer connection<br>
 
-						What you get is a full browser-to-browser communication framework that does not require ANY plugin
+						Full browser-to-browser communication framework - NO plugin
 					</aside>
 				</section>
 				<section>
 					<img src="./images/readyyet.png" style="margin-top: -2em;">
 					<small><p>credit: www.iswebrtcreadyyet.com</p></small>
 					<aside class="notes">
-						Right now WebRTC is mainly supported by Firefox, Opera, and Chrome browsers while Microsoft is making some moves on IE, here’s a neat little website to stay up to date.
+					Firefox, Opera, and Chrome<br>
+					Microsoft IE<br>
 					</aside>
 				</section>
 				<section>
 					<img src="./images/howwefit.png" width="900">
 					<small><p>credit: www.voxbone.com</p></small>
 					<aside class="notes">
-					Where do we fit? This is our original call flow - WebRTC enables browser to browser communications. However, there are still billions of phones, PBXs, call centers that want to be hooked up to this. We provide a way to connect the PSTN to WebRTC by providing a WebRTC to SIP solution.This is our original call flow,
+					Original call flow
+					<br>WebRTC enables browser to browser communications
+					<br>phones, PBXs, call centers want webrtc.
+					<br>Provide connect PSTN to WebRTC with WebRTC-SIP.
 					</aside>
 				</section>
 				<section data-background="./images/owl.png">
@@ -254,8 +258,7 @@
 					</div>
 
 					<aside class="notes">
-						- I'll teach you how to get started developing WebRTC Aps (the circle) and you'll realise how easy it is to quickly create complex apps with other APIs (the owl)<br><br>
-
+						- Teach how to get started - realise APIs<br><br>
 						- WebRTC is awesome because since it's built on open web standards, you can seamlessly mix it with other HTML5 APIs (webAudio or webGL), other open web APIs (three.js or node.js) or any vendors' API (LinkedIn, Facebook, IoT) <br><br>
 					</aside>
 				</section>
