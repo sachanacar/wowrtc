@@ -39,7 +39,7 @@
 			    var expires = Math.ceil((timeInMillis) / 1000);
 			    expires = expires + TTL;
 			    console.log("expires: ",expires);
-			    var username = "voxbonemarketing";
+			    var username = "voxbonedev";
 			    var secret = "wow-RTC14";
 			    var hash = CryptoJS.HmacSHA1(expires + ":" + username, secret);
 			    var base64Hash = hash.toString(CryptoJS.enc.Base64);
